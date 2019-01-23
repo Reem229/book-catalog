@@ -1,0 +1,38 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+<div>
+	<button>
+		<span aria-hidden="true"></span><a href="{{url_for('add_book', bookcatalog_id = bookcatalog.id)}}"> Add New Book</a></button>
+
+
+</div>
+	<div>
+		<h1>{{ bookcatalog.name}}</h1>
+		<div>
+			{% if books !=[] %}
+			    {% for i in books %}
+				<a href='{{url_for("book", bookcatalog_id=bookcatalog.id, book_id= i.id)}}' ><figure><img src="{{i.picture}}"></figure></a>
+			    <p> {{i.name}} <br>By: {{i.author}}<br>
+				<a href="{{url_for('edit_book' , bookcatalog_id = bookcatalog.id, book_id=i.id)}}"> Edit</a> |
+				<a href="{{url_for('delete_book', bookcatalog_id = bookcatalog.id, book_id=i.id)}}"> Delete</a>
+				</p><br>
+			{% endfor %}
+			{% endif%}
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div>
+			<h1>New Menu Item</h1>
+	</div>
+		<div>
+			<form action="#" method = "post">
+				<div>
+					<label for="name">Name:</label>
+					<input type ="text" maxlength="80" name="name"placeholder="Name of the book" required>
+
+					<label for="author">Author:</label>
+					<input type ="text" maxlength="250" name="author" placeholder="Name of Author" required>
+
+
+					<label for="description">Description:</label>
+					<input maxlength="250" class="form-control" type ="text" name="description" placeholder="Description of the book">
+
+					<div>
+					<label for="picture">Picture URL:</label>
+					<input type ="text" maxlength="250" name="picture" placeholder="URL address" required>
+					</div>
+
+					<label for="pages">Number Of Pages:</label>
+					<div class="input-group">
+						<input type ="text" maxlength="100" name="pages" placeholder="pages" required>
+					</div>
+
+					<button type="submit" id="submit" type="submit">
+					<span aria-hidden="true"></span>Create</button>
+			</div>
+			</form>
+		</div>
+{% endblock %}

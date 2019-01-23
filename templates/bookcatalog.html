@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+<div>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+				<h1> Section of books:</h1>
+	{% for bookcatalog in book_catalog %}
+			<div >
+				<a href="{{url_for('books_list', bookcatalog_id=bookcatalog.id)}}">
+				<h3>{{bookcatalog.name}}</h3>
+				</a>
+			</div>
+{% endfor %}
+
+
+{% endblock %}
